@@ -13,8 +13,8 @@ export class Renderer {
     this.camera_position = glm.vec3(-5.813, -0.187, 17.0);
     this.camera_rotation = glm.vec3(-0.208, -0.065, 0.0);
     this.camera_fov = 40.0;
-    this.frame_width = 1024;
-    this.frame_height = 1024;
+    this.frame_width = 500;
+    this.frame_height = 500;
 
     this.meshes = cornell_box_scene;
   }

@@ -198,7 +198,6 @@ vec3 random_point_on_mesh(Mesh m, inout float seed, vec2 pixel, out float p)
 {
     // Pick a random triangle.
     int triangle = min(int(rand(seed, pixel) * float(m.triangle_count)), m.triangle_count - 1);
-    //int(floor(rand(seed, pixel) * float(m.triangle_count)));
 
     // Pick vertices.
     vec3 v0 = vertices[triangles[m.offset + triangle]];
@@ -323,18 +322,13 @@ void main() {
     vec2 uv = vec2(storePos) / vec2(imageSize);
     float seed = uInitialSeed;
 
-    vec3 finalColor = vec3(0.0);
-
     vec2 sample_pos = (vec2(storePos) + rand2(seed, uv)) / vec2(imageSize);
 
     // Generate a camera ray.
     Ray r = create_camera_ray(sample_pos);
 
     // Shade the sample.
-    finalColor += color(r, seed, uv);
-
-    // Merge this sample with previous samples.
-    //vec4 color = clamp(vec4(finalColor, 1.0), 0.0, 1.0);
+    vec3 finalColor = color(r, seed, uv);
 
     // Fetch the previous pixel value.
     vec4 initial = imageLoad(accumulatedTex, storePos);
