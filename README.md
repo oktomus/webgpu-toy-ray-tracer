@@ -1,6 +1,8 @@
 A **web** toy ray tracer made using **compute shaders**.
 
-[Demo](https://oktomus.github.io/webgpu-toy-ray-tracer/)
+:boom: [Demo](https://oktomus.github.io/webgpu-toy-ray-tracer/)
+
+------------------
 
 While this ray tracer is not physically correct and boring, it's a good example of what you can acheive with compute shaders in web.
 
