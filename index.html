@@ -14,11 +14,23 @@
             <a href="https://github.com/oktomus/webgpu-toy-ray-tracer">https://github.com/oktomus/webgpu-toy-ray-tracer</a>
         </p>
         <hr />        
-        <div id="no-support">
+        <div id="no-support" style="display: none">
             <p><mark class="secondary" style="margin-right: 0.5em">Oups: </mark> It seems like WebGL 2.0 Compute is not available on your browser. Make sure you are on a system with WebGL 2.0 Compute enabled.</p>
             <p>Have you tried to open your browser using these arguments ?</p>
             <pre>chrome.exe --use-cmd-decoder=passthrough --use-angle=gl --enable-webgl2-compute-context --use-gl=angle</pre>
         </div>
+        <div id="support" style="display: none">
+            <p>
+                Progressive rendering: <input class="progressiveRendering" type="checkbox" value="0" id="progressiveRendering">
+            </p>
+            <p>
+                <span id="ray-metrics">000</span> million rays/s
+            </p>
+            <canvas id="raytrace-canvas"></canvas>
+        </div>
     </div>
+
+    <script src='https://git.io/glm-js.min.js'></script>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>
