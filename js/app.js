@@ -4,14 +4,15 @@ async function run() {
 
   let renderer = new Renderer();
   window.renderer = renderer;
-  renderer.attach_mouse_events(window.document);
-
-  if (await renderer.init("raytrace-canvas", "ray-metrics"))
+  
+  if (await renderer.init("raytrace-canvas", "ray-metrics", "progressive-rendering"))
   {
     document.getElementById("support").style.display = 'block';
     document.getElementById("no-support").style.display = 'none';
 
-    let animationFrame = function(timestamp) {
+    renderer.attach_mouse_events();
+
+    let animationFrame = function() {
       renderer.render();
 
       window.requestAnimationFrame(animationFrame);

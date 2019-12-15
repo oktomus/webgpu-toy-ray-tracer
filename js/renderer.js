@@ -19,20 +19,22 @@ export class Renderer {
     this.meshes = cornell_box_scene;
   }
 
-  async init(canvasSelector, rayMetricSelector) {
+  async init(canvasId, rayMetricId, progressiveRenderingId) {
     // Canvas setup.
-    const canvas = document.getElementById(canvasSelector);
-    canvas.width = this.frame_width;
-    canvas.height = this.frame_height;
+    this.canvas = document.getElementById(canvasId);
+    this.canvas.width = this.frame_width;
+    this.canvas.height = this.frame_height;
 
     // Create WebGL2ComputeRenderingContext
-    this.context = canvas.getContext('webgl2-compute', { antialias: false });
+    this.context = this.canvas.getContext('webgl2-compute', { antialias: false });
     if (!this.context) {
       console.error("Cannot start webgl2 compute context.");
       return false;
     }
 
-    this.rayMetricSpan = document.getElementById(rayMetricSelector);
+    this.rayMetricSpan = document.getElementById(rayMetricId);
+    this.progressiveRenderingCheckbox = document.getElementById(progressiveRenderingId)
+    this.progressiveRenderingCheckbox.checked = true;
 
     this.create_scene_buffer(this.context);
 
@@ -41,27 +43,32 @@ export class Renderer {
     return true;
   }
 
-  attach_mouse_events(document) {
+  attach_mouse_events() {
     this.mouse_down = false;
     this.mouse_right = false;
     this.mouse_pos = glm.vec2(0.0);
 
-    document.addEventListener('mousedown', (e) => {
+    this.canvas.addEventListener('mouseleave', (e) => {
+      this.mouse_down = false;
+      this.mouse_right = false;
+    });
+
+    this.canvas.addEventListener('mousedown', (e) => {
       this.mouse_down = true;
       this.mouse_right = e.button === 2;
       this.mouse_pos = glm.vec2(e.clientX, e.clientY);
     });
 
-    document.addEventListener('mouseup', (e) => {
+    this.canvas.addEventListener('mouseup', (e) => {
       this.mouse_down = false;
       this.mouse_right = false;
     });
 
-    document.addEventListener('contextmenu', (e) => {
+    this.canvas.addEventListener('contextmenu', (e) => {
       e.preventDefault();
     });
 
-    document.onmousemove = (e) => {
+    this.canvas.onmousemove = (e) => {
       if (this.mouse_down && this.mouse_right)
       {
         const new_mouse_pos = glm.vec2(e.clientX, e.clientY);
@@ -247,7 +254,7 @@ export class Renderer {
       return;
     }
 
-    if (!document.querySelector('.progressiveRendering').checked && this.SPP != 0)
+    if (!this.progressiveRenderingCheckbox.checked && this.SPP != 0)
     {
       return;
     }

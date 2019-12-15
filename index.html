@@ -20,13 +20,20 @@
             <pre>chrome.exe --use-cmd-decoder=passthrough --use-angle=gl --enable-webgl2-compute-context --use-gl=angle</pre>
         </div>
         <div id="support" style="display: none">
-            <p>
-                Progressive rendering: <input class="progressiveRendering" type="checkbox" value="0" id="progressiveRendering">
-            </p>
-            <p>
-                <span id="ray-metrics">000</span> million rays/s
-            </p>
-            <canvas id="raytrace-canvas"></canvas>
+            <div class="row">
+                <div class="col-sm-6">
+                    <span id="ray-metrics">000</span> million rays/s
+               </div>  
+               <div class="col-sm-6">
+                   Progressive rendering: <input type="checkbox" value="1" id="progressive-rendering"/>
+                </div>  
+            </div>
+            <div class="row">
+                Use the mouse to move the camera (<b>Left click: </b> rotation, <b>right click: </b> pan, <b>scroll wheel: </b> zoom).
+            </div>
+            <div class="row">
+                <canvas id="raytrace-canvas"></canvas>
+            </div>
         </div>
     </div>
 
