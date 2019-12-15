@@ -228,7 +228,7 @@ vec3 color(Ray r, inout float seed, vec2 pixel)
 {
     float t;
     vec3 n;
-    int max_depth = 100;
+    int max_depth = 5;
     int depth = 0;
     int mesh_indice;
 
@@ -251,11 +251,11 @@ vec3 color(Ray r, inout float seed, vec2 pixel)
             return mesh.emission;
         }
 
+        vec3 hit_point = ray_at(r, t);
+
         // Consider hit.
         if (mesh.emission == vec3(0.0))
         {
-            vec3 hit_point = ray_at(r, t);
-
             float light_pdf = 0.0;
 
             // Generate a point on the light.
@@ -278,16 +278,15 @@ vec3 color(Ray r, inout float seed, vec2 pixel)
         }
 
         // Bounce.
-        vec3 p = ray_at(r, t);
         vec2 s = rand2(seed, pixel);
-        vec3 target = p + n + sample_sphere_uniform(s);
-        r.origin = p;
+        vec3 target = hit_point + n + sample_sphere_uniform(s);
+        r.origin = hit_point;
         r.direction = normalize(target - r.origin);
 
         depth++;
     }
 
-    return res;
+    return res / float(depth);
 }
 
 //
