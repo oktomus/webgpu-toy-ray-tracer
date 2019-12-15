@@ -2,7 +2,7 @@ A **web** toy ray tracer made using **compute shaders**.
 
 :boom: [Demo](https://oktomus.github.io/webgpu-toy-ray-tracer/)
 
-[![raytracing.jpg](screenshot.jpg)](https://oktomus.github.io/webgpu-toy-ray-tracer/)
+[![ray tracing demo](demo.gif)](https://oktomus.github.io/webgpu-toy-ray-tracer/)
 
 ------------------
 
