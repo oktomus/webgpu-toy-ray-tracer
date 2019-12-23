@@ -1,4 +1,4 @@
-A **web** toy ray tracer made using **compute shaders**.
+A **web** toy ray tracer made using [**WebGL 2.0 Compute**](https://www.khronos.org/registry/webgl/specs/latest/2.0-compute/)
 
 :boom: [Demo](https://oktomus.github.io/webgpu-toy-ray-tracer/)
 
@@ -10,9 +10,6 @@ While this ray tracer is not physically correct and boring, it's a good example 
 
 This was made possible thanks to WebGL 2.0 Compute, an experimental feature currently available on Google Chrome (Linux or Windows).
 
-Many thanks to [9ballsyndrome](https://github.com/9ballsyndrome) for his help and especially for his repository [WebGL_Compute_shader](https://github.com/9ballsyndrome/WebGL_Compute_shader) where you can find really cool stuff made using WebGL 2.0 Compute.
+I'm working on [WebGPU](https://gpuweb.github.io/gpuweb/) version that I will upload here.
 
-If you are interested into compute shaders for the web, here are some links:
-- [WebGL 2.0 Compute Editor’s Draft](https://www.khronos.org/registry/webgl/specs/latest/2.0-compute/)
-- [WebGL 2.0 Compute for emscripten](https://github.com/emscripten-core/emscripten/pull/7612)
-- [Khronos group wiki](https://www.khronos.org/webgl/wiki/Main_Page)
+Many thanks to [9ballsyndrome](https://github.com/9ballsyndrome) for his help and especially for his repository [WebGL_Compute_shader](https://github.com/9ballsyndrome/WebGL_Compute_shader) where you can find really cool stuff made using WebGL 2.0 Compute.
